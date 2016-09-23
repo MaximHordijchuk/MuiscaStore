@@ -1,4 +1,35 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "main";
+@import 'https://fonts.googleapis.com/css?family=Great+Vibes';
 
+header {
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    font-size: 67px;
+    border-bottom: 1px solid #D1D1D1;
+    padding-bottom: 7px;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+}
+
+#menu {
+  padding: 0;
+
+  .nav-pills a {
+    border-radius: 0;
+  }
+
+  hr {
+    margin: 0;
+  }
+}
