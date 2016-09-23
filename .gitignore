@@ -27,3 +27,6 @@
 
 # Ignore precompiled assets
 /public/assets
+
+# Ignore uploads
+/public/uploads/
