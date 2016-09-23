@@ -9,14 +9,27 @@
       <%= @product.name %>
       (<%= link_to 'Edit', edit_product_path(@product) %>)
     </h1>
-    <h4>
+    <div class="field">
       <strong>Article:</strong>
       <%= @product.article %>
-    </h4>
-    <h4>
+    </div>
+    <div class="field">
       <strong>Price:</strong>
       <%= number_to_currency @product.price %>
-    </h4>
+    </div>
+    <%= form_for :product, url: add_product_path, html: { class: 'small-fixed-col' } do |f| %>
+      <%= f.hidden_field :id %>
+      <div class="field">
+        <strong>Amount:</strong>
+        <%= number_field_tag 'product[amount]', '1', min: 1, class: 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.submit 'Add to cart', class: 'btn btn-success' %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= link_to 'Continue buying', category_path(@product.category), class: 'btn btn-default' %>
+    </div>
   </div>
   <div class="col-xs-12">
     <div class="row">

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   root to:'main#index'
   get '/about' => 'main#about', as: 'about'
 
+  post '/add_product' => 'cart#add', as: 'add_product'
+  patch '/update_product' => 'cart#update', as: 'update_product'
+  delete '/remove_product' => 'cart#remove', as: 'remove_product'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
