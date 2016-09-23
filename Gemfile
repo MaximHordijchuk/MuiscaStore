@@ -51,4 +51,8 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# Gems for image uploading and processing
+gem 'rmagick'
+gem 'carrierwave'
+
 ruby '2.3.0'

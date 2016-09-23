@@ -20,5 +20,10 @@
   <%= @product.category %>
 </p>
 
+<% @product_attachment.each do |p| %>
+    <%= image_tag p.image_url %>
+    <%= link_to 'Edit Attachment', edit_product_attachment_path(p) %>
+<% end %>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

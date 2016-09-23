@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_attachments
   resources :products
   resources :categories
   root to:'main#index'
