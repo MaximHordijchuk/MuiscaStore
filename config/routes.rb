@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  devise_for :buyers, skip: :registrations
+  devise_scope :buyer do
+    resource :registration,
+    only: [:new, :create],
+    path: 'buyers',
+    path_names: { new: 'sign_up' },
+    controller: 'devise/registrations'
+  end
+
   resources :product_attachments
   resources :products
   resources :categories
+
   root to:'main#index'
-  get 'main/about' => 'main#about', as: :about
+  get '/about' => 'main#about', as: 'about'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

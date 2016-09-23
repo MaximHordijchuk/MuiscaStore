@@ -1,0 +1,17 @@
+#new_buyer, .small-fixed-col {
+  width: 300px;
+
+  input {
+    margin-bottom: 5px;
+  }
+}
+
+#devise-links {
+  margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+  #new_buyer, .small-fixed-col {
+    width: 100%;
+  }
+}

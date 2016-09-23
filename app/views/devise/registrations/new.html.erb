@@ -1,0 +1,19 @@
+<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <h1>Register</h1>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address', required: true %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password', required: true %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: 'Password confirmation', required: true %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Register', class: 'btn btn-success btn-block', id: 'signup-btn' %>
+    </div>
+<% end %>
+<div id="devise-links">
+  <%= render "devise/shared/links" %>
+</div>

@@ -38,9 +38,13 @@
           </ul>
           <hr>
           <ul id="additional" class="nav nav-pills nav-stacked">
-            <li>
-              <%= link_to 'About us', about_path %>
-            </li>
+            <% if buyer_signed_in? %>
+              <li><%= link_to 'Logout', destroy_buyer_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Register', new_registration_path %></li>
+              <li><%= link_to 'Login', new_buyer_session_path %></li>
+            <% end %>
+            <li><%= link_to 'About us', about_path %></li>
           </ul>
         </div>
       </div>
