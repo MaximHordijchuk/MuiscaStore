@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :product_attachments
   resources :products
   resources :categories
+  resources :orders
 
   root to:'main#index'
   get '/about' => 'main#about', as: 'about'

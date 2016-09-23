@@ -24,11 +24,14 @@
         <%= number_field_tag 'product[amount]', '1', min: 1, class: 'form-control', required: true %>
       </div>
       <div class="field">
-        <%= f.submit 'Add to cart', class: 'btn btn-success' %>
+        <%= f.submit 'Add to cart', class: 'btn btn-primary' %>
       </div>
     <% end %>
     <div class="field">
       <%= link_to 'Continue buying', category_path(@product.category), class: 'btn btn-default' %>
+    </div>
+    <div class="field">
+      <%= link_to 'Finish', new_order_path, class: 'btn btn-success' %>
     </div>
   </div>
   <div class="col-xs-12">

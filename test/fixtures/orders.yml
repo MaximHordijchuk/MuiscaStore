@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  surname: MyString
+  address: MyString
+  phone: MyString
+  card_no: MyString
+  card_type: MyString
+  expire_month: 1
+  expire_year: 1
+  buyer_id: 
+
+two:
+  name: MyString
+  surname: MyString
+  address: MyString
+  phone: MyString
+  card_no: MyString
+  card_type: MyString
+  expire_month: 1
+  expire_year: 1
+  buyer_id: 

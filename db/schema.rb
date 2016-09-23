@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923150014) do
+ActiveRecord::Schema.define(version: 20160923173050) do
 
   create_table "buyers", force: :cascade do |t|
     t.string   "login"
@@ -39,6 +39,22 @@ ActiveRecord::Schema.define(version: 20160923150014) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "card_no"
+    t.string   "card_type"
+    t.integer  "expire_month"
+    t.integer  "expire_year"
+    t.integer  "buyer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "orders", ["buyer_id"], name: "index_orders_on_buyer_id"
 
   create_table "product_attachments", force: :cascade do |t|
     t.string   "image"

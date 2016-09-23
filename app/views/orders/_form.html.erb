@@ -1,0 +1,53 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :surname %><br>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :card_no %><br>
+    <%= f.text_field :card_no %>
+  </div>
+  <div class="field">
+    <%= f.label :card_type %><br>
+    <%= f.text_field :card_type %>
+  </div>
+  <div class="field">
+    <%= f.label :expire_month %><br>
+    <%= f.number_field :expire_month %>
+  </div>
+  <div class="field">
+    <%= f.label :expire_year %><br>
+    <%= f.number_field :expire_year %>
+  </div>
+  <div class="field">
+    <%= f.label :buyer_id %><br>
+    <%= f.text_field :buyer_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
