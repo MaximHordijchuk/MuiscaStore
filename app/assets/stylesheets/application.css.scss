@@ -33,3 +33,8 @@ header {
     margin: 0;
   }
 }
+
+.thumbnail.fixed-height img {
+  max-height: 150px;
+  height: 150px;
+}
