@@ -26,6 +26,14 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    cart = session[:cart]
+    if cart
+      cart.each do |id, amount|
+        @order.orders_products << OrdersProduct.new(product_id: id, amount: amount)
+      end
+    else
+      redirect_to root_path, notice: 'Your cart is empty. Please, add some staff to your cart before ordering.'
+    end
 
     respond_to do |format|
       if @order.save
