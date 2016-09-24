@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root to:'main#index'
   get '/about' => 'main#about', as: 'about'
 
+  get '/cart' => 'cart#index', as: 'cart'
   post '/add_product' => 'cart#add', as: 'add_product'
   patch '/update_product' => 'cart#update', as: 'update_product'
   delete '/remove_product' => 'cart#remove', as: 'remove_product'

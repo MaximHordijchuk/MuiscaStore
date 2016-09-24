@@ -1,6 +1,17 @@
 class CartController < ApplicationController
   before_action :set_cart
 
+  # get /cart
+  def index
+    cart = session[:cart]
+    if cart
+      @cart = cart.map { |id, amount| { product: Product.find(id), amount: amount } }
+      @total = @cart.inject(0) { |sum, hash| sum + hash[:product].price * hash[:amount] }
+    else
+      redirect_to root_path, notice: 'Your cart is empty. Please, add some staff to your cart before ordering.'
+    end
+  end
+
   # post /add_product
   def add
     product_id = params[:product][:id]

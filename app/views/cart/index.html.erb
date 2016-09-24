@@ -1,0 +1,35 @@
+<table class="table table-bordered table-hover cart">
+  <thead class="thead-default">
+    <tr>
+      <th></th>
+      <th>Article</th>
+      <th>Product name</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.each do |e| %>
+      <tr>
+        <td class="image-col">
+          <div class="text-center">
+            <%= image_tag e[:product].product_attachments.first.image.url, class: 'small-image' %>
+          </div>
+        </td>
+        <td><%= e[:product].article %></td>
+        <td><%= e[:product].name %></td>
+        <td><%= e[:amount] %></td>
+        <td><%= e[:product].price %></td>
+        <td><%= e[:product].price * e[:amount] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="total-price">
+  Total: <%= @total %>
+</div>
+<div class="action-btns-right">
+  <%= link_to 'Continue buying', root_path, class: 'btn btn-default' %>
+  <%= link_to 'Place order', new_order_path, class: 'btn btn-success' %>
+</div>
