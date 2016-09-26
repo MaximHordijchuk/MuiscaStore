@@ -1,53 +1,66 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<div class="row">
+  <div class="col-lg-8 col-md-10 col-sm-12">
+    <%= form_for(@order) do |f| %>
+      <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
+        </div>
+        <div class="col-sm-6 form-group">
+          <%= f.label :surname %>
+          <%= f.text_field :surname, class: 'form-control', placeholder: 'surname' %>
+        </div>
+        <div class="col-xs-12 form-group">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: 'form-control', placeholder: 'address' %>
+        </div>
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone, class: 'form-control', placeholder: 'phone' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <%= f.label :card_type %>
+          <%= f.text_field :card_type, class: 'form-control', placeholder: 'eg. MasterCard' %>
+        </div>
+        <div class="col-sm-6 form-group">
+          <%= f.label :card_number %>
+          <%= f.text_field :card_no, class: 'form-control', placeholder: '0000-0000-0000-0000' %>
+        </div>
+        <div class="col-sm-6 form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.label :expire_month %><br>
+              <%= f.number_field :expire_month, min: 1, max: 12, class: 'form-control' %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.label :expire_year %><br>
+              <%= f.number_field :expire_year, min: 2016, max: 2100, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.submit class: 'btn btn-success pull-right' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :surname %><br>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :card_no %><br>
-    <%= f.text_field :card_no %>
-  </div>
-  <div class="field">
-    <%= f.label :card_type %><br>
-    <%= f.text_field :card_type %>
-  </div>
-  <div class="field">
-    <%= f.label :expire_month %><br>
-    <%= f.number_field :expire_month %>
-  </div>
-  <div class="field">
-    <%= f.label :expire_year %><br>
-    <%= f.number_field :expire_year %>
-  </div>
-  <div class="field">
-    <%= f.label :buyer_id %><br>
-    <%= f.text_field :buyer_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
