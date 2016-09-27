@@ -60,6 +60,10 @@ table.cart {
   }
 }
 
+table td.align-left, table tr.align-left {
+  text-align: left;
+}
+
 .total-price {
   font-weight: bold;
   text-align: right;
@@ -71,7 +75,7 @@ table.cart {
   float: right;
 }
 
-#new-category-block {
+.right-btn-block {
   position: relative;
 
   a {

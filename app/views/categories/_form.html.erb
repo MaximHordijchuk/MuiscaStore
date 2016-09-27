@@ -1,25 +1,31 @@
-<%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<div class="row">
+  <div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+    <%= form_for(@category) do |f| %>
+        <% if @category.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
-      <ul>
-      <% @category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% @category.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+        <div class="row">
+          <div class="col-sm-3 col-xs-12 form-group">
+            <%= f.label :position %><br>
+            <%= f.number_field :position, class: 'form-control' %>
+          </div>
+          <div class="col-sm-9 col-xs-12 form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.submit class: 'btn btn-success pull-right' %>
+          </div>
+        </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
