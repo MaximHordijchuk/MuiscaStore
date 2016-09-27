@@ -1,37 +1,51 @@
-<%= form_for @product, html: { multipart: true } do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="row">
+  <div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+    <%= form_for @product, html: { multipart: true } do |f| %>
+        <% if @product.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+                <% @product.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :article %><br>
-    <%= f.number_field :article %>
+        <div class="row">
+          <div class="col-sm-3 col-xs-12 form-group">
+            <%= f.label :article %>
+            <%= f.number_field :article, class: 'form-control' %>
+          </div>
+          <div class="col-sm-9 col-xs-12 form-group">
+            <%= f.label :name %>
+            <%= f.number_field :name, class: 'form-control' %>
+          </div>
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-sm-4 col-xs-12 form-group">
+                <%= f.label :price %>
+                <%= f.text_field :price, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-sm-4 col-xs-12 form-group">
+                <%= f.label 'Category id' %>
+                <%= f.text_field :category_id, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :images %><br>
+            <%= f.file_field :image, multiple: true, name: 'product_attachments[image][]' %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.submit 'Add product', class: 'btn btn-success pull-right' %>
+          </div>
+        </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
-  </div>
-  <div>
-    <%= f.label :image %><br>
-    <%= f.file_field :image, multiple: true, name: 'product_attachments[image][]' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
