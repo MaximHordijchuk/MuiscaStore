@@ -70,3 +70,20 @@ table.cart {
 .action-btns-right {
   float: right;
 }
+
+#new-category-block {
+  position: relative;
+
+  a {
+    float: right;
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+  }
+}
+
+#categories-table {
+  tr td:first-of-type{
+    width: 1%;
+  }
+}
