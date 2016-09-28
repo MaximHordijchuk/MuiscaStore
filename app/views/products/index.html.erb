@@ -15,7 +15,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @products.each do |product| %>
+    <% @products.each do |product| %>
       <tr>
         <td><%= product.article %></td>
         <td class="align-left"><%= product.name %></td>
@@ -27,6 +27,6 @@
           <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
-  <% end %>
+    <% end %>
   </tbody>
 </table>

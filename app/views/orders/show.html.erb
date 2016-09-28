@@ -1,49 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
-
-<p>
-  <strong>Surname:</strong>
-  <%= @order.surname %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @order.phone %>
-</p>
-
-<p>
-  <strong>Card no:</strong>
-  <%= @order.card_no %>
-</p>
-
-<p>
-  <strong>Card type:</strong>
-  <%= @order.card_type %>
-</p>
-
-<p>
-  <strong>Expire month:</strong>
-  <%= @order.expire_month %>
-</p>
-
-<p>
-  <strong>Expire year:</strong>
-  <%= @order.expire_year %>
-</p>
-
-<p>
-  <strong>Buyer:</strong>
-  <%= @order.buyer %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<h1>Order</h1>
+<div class="row">
+  <div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>Name:</strong>
+        <%= @order.name %>
+      </li>
+      <li class="list-group-item">
+        <strong>Surname:</strong>
+        <%= @order.surname %>
+      </li>
+      <li class="list-group-item">
+        <strong>Email:</strong>
+        <%= @order.buyer.email %>
+      </li>
+      <li class="list-group-item">
+        <strong>Address:</strong>
+        <%= @order.address %>
+      </li>
+      <li class="list-group-item">
+        <strong>Phone:</strong>
+        <%= @order.phone %>
+      </li>
+      <li class="list-group-item">
+        <strong>Card no:</strong>
+        <%= @order.card_no %>
+      </li>
+      <li class="list-group-item">
+        <strong>Card type:</strong>
+        <%= @order.card_type %>
+      </li>
+      <li class="list-group-item">
+        <strong>Expire month:</strong>
+        <%= @order.expire_month %>
+      </li>
+      <li class="list-group-item">
+        <strong>Expire year:</strong>
+        <%= @order.expire_year %>
+      </li>
+    </ul>
+  </div>
+</div>
+<%= link_to 'Show', @order, class: 'btn btn-default' %>
+<%= link_to 'Back', orders_path, class: 'btn btn-default' %>
