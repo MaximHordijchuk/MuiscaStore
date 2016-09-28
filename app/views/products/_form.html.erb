@@ -38,12 +38,14 @@
               </div>
             </div>
           </div>
+          <% unless @product.persisted? %>
+            <div class="col-xs-12">
+              <%= f.label :images %><br>
+              <%= f.file_field :image, multiple: true, name: 'product_attachments[image][]' %>
+            </div>
+          <% end %>
           <div class="col-xs-12">
-            <%= f.label :images %><br>
-            <%= f.file_field :image, multiple: true, name: 'product_attachments[image][]' %>
-          </div>
-          <div class="col-xs-12">
-            <%= f.submit 'Add product', class: 'btn btn-success pull-right' %>
+            <%= f.submit class: 'btn btn-success pull-right' %>
           </div>
         </div>
     <% end %>

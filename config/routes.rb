@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     controller: 'devise/registrations'
   end
 
-  resources :product_attachments
-  resources :products
+  resources :products do
+    resources :product_attachments, :except => [:index, :show]
+  end
   resources :categories
   resources :orders
 

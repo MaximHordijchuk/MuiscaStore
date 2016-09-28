@@ -1,6 +1,5 @@
-<h1>Editing Product Attachment</h1>
+<h1>Editing <%= @product.name %> Attachment</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product_attachment %> |
-<%= link_to 'Back', product_attachments_path %>
+<%= link_to 'Back', edit_product_path(@product), class: 'btn btn-default' %>

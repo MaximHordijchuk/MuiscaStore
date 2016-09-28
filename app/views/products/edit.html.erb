@@ -2,5 +2,32 @@
 
 <%= render 'form' %>
 
+<hr>
+
+<h2>Images</h2>
+
+<div class="right-btn-block">
+  <%= link_to 'Add image', new_product_product_attachment_path(@product), class: 'btn btn-success pull-right' %>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <% @product.product_attachments.each do |p| %>
+          <div class="col-xs-6 col-md-4 col-lg-3">
+            <div class="thumbnail fixed-height">
+              <%= image_tag p.image.url(:preview) %>
+              <div class="caption btn-group-xs text-center">
+                <%= link_to 'Change', edit_product_product_attachment_path(@product, p), class: 'btn btn-primary' %>
+                <%= link_to 'Remove', product_product_attachment_path(@product, p), method: :delete, class: 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 <%= link_to 'Show', @product, class: 'btn btn-default' %>
 <%= link_to 'Back', products_path, class: 'btn btn-default' %>
