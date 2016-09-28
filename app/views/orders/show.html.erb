@@ -31,12 +31,8 @@
         <%= @order.card_type %>
       </li>
       <li class="list-group-item">
-        <strong>Expire month:</strong>
-        <%= @order.expire_month %>
-      </li>
-      <li class="list-group-item">
-        <strong>Expire year:</strong>
-        <%= @order.expire_year %>
+        <strong>Expire:</strong>
+        <%= '%02d' % @order.expire_month %> / <%= '%02d' % @order.expire_year %>
       </li>
     </ul>
   </div>
