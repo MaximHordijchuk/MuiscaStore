@@ -5,6 +5,8 @@ class CartController < ApplicationController
   def index
     cart = session[:cart]
     if cart
+      cart = cart.select { |id, _| Product.find_by_id(id) }
+      session[:cart] = cart
       @cart = cart.map { |id, amount| { product: Product.find(id), amount: amount } }
       @total = @cart.inject(0) { |sum, hash| sum + hash[:product].price * hash[:amount] }
     else
@@ -26,7 +28,7 @@ class CartController < ApplicationController
       else
         @cart[product_id] = amount
       end
-      redirect_to product_path(product_id) and return
+      redirect_to product_path(product_id), notice: 'Products have been added to your card.' and return
     end
     redirect_to root_path, alert: 'Couldn\'t add product. Product not found.'
   end
@@ -48,10 +50,10 @@ class CartController < ApplicationController
 
   # delete /remove_product
   def remove
-    product_id = params[:product][:id]
+    product_id = params[:id]
     if @cart[product_id]
-      @cart[product_id].delete(product_id)
-      redirect_to product_path(product_id) and return
+      @cart.delete(product_id)
+      redirect_to cart_path and return
     end
     redirect_to root_path, alert: 'Couldn\'t remove product. Product not found.'
   end

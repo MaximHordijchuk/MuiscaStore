@@ -8,9 +8,8 @@
   <tbody>
   <% @categories.each do |category| %>
       <tr>
-        <td class="btn-group-xs">
+        <td class="small-col">
           <%= category.position %>
-
         </td>
         <td><%= category.name %> (id: <%= category.id %>)
           <div class="pull-right btn-group-xs">

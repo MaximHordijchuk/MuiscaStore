@@ -7,21 +7,29 @@
       <th>Amount</th>
       <th>Price</th>
       <th>Subtotal</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @cart.each do |e| %>
       <tr>
-        <td class="image-col">
-          <div class="text-center">
-            <%= image_tag e[:product].product_attachments.first.image.url, class: 'small-image' %>
-          </div>
+        <td class="small-col">
+          <a href="<%= product_path(e[:product].id) %>">
+            <div class="text-center">
+              <%= image_tag e[:product].product_attachments.first.image.url, class: 'small-image' %>
+            </div>
+          </a>
         </td>
         <td><%= e[:product].article %></td>
-        <td><%= e[:product].name %></td>
+        <td><%= link_to e[:product].name, product_path(e[:product]) %></td>
         <td><%= e[:amount] %></td>
         <td><%= number_to_currency e[:product].price %></td>
         <td><%= number_to_currency e[:product].price * e[:amount] %></td>
+        <td class="small-col btn-group-sm">
+          <a href="<%= remove_product_path(e[:product]) %>" class="btn btn-danger" data-method="delete">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+        </td>
       </tr>
     <% end %>
   </tbody>
