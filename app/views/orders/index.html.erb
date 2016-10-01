@@ -16,7 +16,7 @@
         <td><%= order.name %></td>
         <td><%= order.surname %></td>
         <td><%= order.phone %></td>
-        <td><%= order.buyer.email %></td>
+        <td><%= order.user.email %></td>
         <td class="btn-group-xs">
           <%= link_to 'Show', order, class: 'btn btn-default' %>
           <%= link_to 'Edit', edit_order_path(order), class: 'btn btn-primary' %>

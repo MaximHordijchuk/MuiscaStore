@@ -9,7 +9,7 @@ one:
   card_type: MyString
   expire_month: 1
   expire_year: 1
-  buyer_id: 
+  user_id:
 
 two:
   name: MyString
@@ -20,4 +20,4 @@ two:
   card_type: MyString
   expire_month: 1
   expire_year: 1
-  buyer_id: 
+  user_id:

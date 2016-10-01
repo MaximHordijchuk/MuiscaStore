@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.buyer = current_buyer
+    @order.user = current_user
 
     cart = session[:cart]
     if cart
@@ -85,8 +85,8 @@ class OrdersController < ApplicationController
   end
 
   def ensure_signed_in!
-    unless buyer_signed_in?
-      redirect_to new_buyer_session_path, notice: 'Please, login or register before ordering.'
+    unless user_signed_in?
+      redirect_to new_user_session_path, notice: 'Please, login or register before ordering.'
       false
     end
   end

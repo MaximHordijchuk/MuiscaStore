@@ -1,4 +1,4 @@
-#new_buyer, .small-fixed-col {
+#new_user, .small-fixed-col {
   width: 300px;
 
   input {
@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 480px) {
-  #new_buyer, .small-fixed-col {
+  #new_user, .small-fixed-col {
     width: 100%;
   }
 }
