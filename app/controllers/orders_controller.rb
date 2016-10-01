@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :ensure_signed_in!
+  before_filter :ensure_admin!, except: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -39,7 +40,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        session[:cart] = {}
+        format.html { redirect_to root_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -87,6 +89,13 @@ class OrdersController < ApplicationController
   def ensure_signed_in!
     unless user_signed_in?
       redirect_to new_user_session_path, notice: 'Please, login or register before ordering.'
+      false
+    end
+  end
+
+  def ensure_admin!
+    unless current_user.try(:admin?)
+      redirect_to root_path, alert: 'Permission denied.'
       false
     end
   end

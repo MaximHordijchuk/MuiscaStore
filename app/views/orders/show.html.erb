@@ -32,7 +32,9 @@
       </li>
       <li class="list-group-item">
         <strong>Expire:</strong>
-        <%= '%02d' % @order.expire_month %> / <%= '%02d' % @order.expire_year %>
+        <% if @order.expire_month && @order.expire_year %>
+          <%= '%02d' % @order.expire_month %> / <%= '%02d' % @order.expire_year %>
+        <% end %>
       </li>
     </ul>
   </div>

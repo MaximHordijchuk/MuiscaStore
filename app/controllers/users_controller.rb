@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :ensure_admin!
+
   # get /users
   def index
     @users = User.all.page(params[:page])
@@ -25,6 +27,15 @@ class UsersController < ApplicationController
       else
         format.html { redirect_to users_path, alert: 'User wasn\'t prohibited.' }
       end
+    end
+  end
+
+  private
+
+  def ensure_admin!
+    unless current_user.try(:admin?)
+      redirect_to root_path, alert: 'Permission denied.'
+      false
     end
   end
 end

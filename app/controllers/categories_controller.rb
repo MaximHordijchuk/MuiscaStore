@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :ensure_admin!, except: [:show]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -73,6 +74,13 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :position)
+    end
+
+    def ensure_admin!
+      unless current_user.try(:admin?)
+        redirect_to root_path, alert: 'Permission denied.'
+        false
+      end
     end
 
     def update_positions(old_pos = nil)

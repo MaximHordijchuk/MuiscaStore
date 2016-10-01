@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :ensure_admin!, except: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -76,5 +77,12 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:article, :name, :price, :category_id, product_attachments_attributes: [:id, :product_id, :image])
+    end
+
+    def ensure_admin!
+      unless current_user.try(:admin?)
+        redirect_to root_path, alert: 'Permission denied.'
+        false
+      end
     end
 end

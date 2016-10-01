@@ -1,4 +1,5 @@
 class ProductAttachmentsController < ApplicationController
+  before_filter :ensure_admin!
   before_action :set_product
   before_action :set_product_attachment, only: [:edit, :update, :destroy]
 
@@ -60,5 +61,12 @@ class ProductAttachmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_attachment_params
       params.require(:product_attachment).permit(:image, :product_id)
+    end
+
+    def ensure_admin!
+      unless current_user.try(:admin?)
+        redirect_to root_path, alert: 'Permission denied.'
+        false
+      end
     end
 end
