@@ -1,21 +1,29 @@
 <h1>Categories</h1>
 
 <div class="right-btn-block">
-  <%= link_to 'New Category', new_category_path, class: 'btn btn-success' %>
+  <%= link_to 'Add Category', new_category_path, class: 'btn btn-success' %>
 </div>
 
-<table id="categories-table" class="table table-bordered table-hover">
+<table class="table centered-table table-hover">
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th class="align-left">Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
   <tbody>
   <% @categories.each do |category| %>
       <tr>
         <td class="small-col">
           <%= category.position %>
         </td>
-        <td><%= category.name %> (id: <%= category.id %>)
-          <div class="pull-right btn-group-xs">
+        <td class="align-left"><%= category.name %> (id: <%= category.id %>)</td>
+        <td class="small-col">
+          <div class="btn-group-xs actions">
             <%= link_to 'Show', category, class: 'btn btn-default' %>
             <%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %>
-            <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Remove', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           </div>
         </td>
       </tr>

@@ -60,10 +60,25 @@ table {
   .small-col {
     width: 1%;
   }
-}
 
-table td.align-left, table tr.align-left {
-  text-align: left;
+  &.centered-table {
+    td, th {
+      text-align: center;
+      vertical-align: middle !important;
+    }
+  }
+
+  td.align-left,
+  tr.align-left,
+  th.align-left {
+    text-align: left;
+  }
+
+  td.align-center,
+  tr.align-center,
+  th.align-center {
+    text-align: center;
+  }
 }
 
 .total-price {
@@ -88,16 +103,14 @@ table td.align-left, table tr.align-left {
   }
 }
 
-#categories-table {
-  tr td:first-of-type{
-    width: 1%;
-  }
-}
-
 .inline {
   display: inline-block;
 }
 
 .user-actions {
   width: 171px;
+}
+
+.actions {
+  width: 140px;
 }

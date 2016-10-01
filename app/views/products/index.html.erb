@@ -4,11 +4,11 @@
   <%= link_to 'Add Product', new_product_path, class: 'btn btn-success' %>
 </div>
 
-<table class="table table-bordered table-hover cart">
+<table class="table table-hover centered-table">
   <thead class="thead-default">
   <tr>
     <th>Article</th>
-    <th>Name</th>
+    <th class="align-left">Name</th>
     <th>Price</th>
     <th>Category</th>
     <th>Actions</th>
@@ -21,10 +21,12 @@
         <td class="align-left"><%= product.name %></td>
         <td><%= number_to_currency product.price %></td>
         <td><%= product.category.name %></td>
-        <td class="btn-group-xs">
-          <%= link_to 'Show', product, class: 'btn btn-default' %>
-          <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-primary' %>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <td class="small-col">
+          <div class="btn-group-xs actions">
+            <%= link_to 'Show', product, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-primary' %>
+            <%= link_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
         </td>
       </tr>
     <% end %>
