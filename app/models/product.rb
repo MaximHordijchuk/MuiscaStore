@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
   belongs_to :category
-  has_many :product_attachments
+  has_many :product_attachments, dependent: :destroy
   accepts_nested_attributes_for :product_attachments
-  has_and_belongs_to_many :orders
+  has_and_belongs_to_many :orders, dependent: :destroy
 
   MAX_PRODUCT_ATTACHMENTS = 10
 
