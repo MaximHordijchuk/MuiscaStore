@@ -21,12 +21,25 @@ class UsersController < ApplicationController
   # patch /users/prohibit_admin
   def prohibit_admin
     @user = User.find(params[:user][:id])
-    respond_to do |format|
+    if @user == current_user
+      redirect_to users_path, alert: 'You cannot change your privileges.'
+    else
       if @user.update_attribute(:admin, false)
-        format.html { redirect_to users_path, notice: 'User was successfully prohibited.' }
+        redirect_to users_path, notice: 'User was successfully prohibited.'
       else
-        format.html { redirect_to users_path, alert: 'User wasn\'t prohibited.' }
+        redirect_to users_path, alert: 'User wasn\'t prohibited.'
       end
+    end
+  end
+
+  # delete /users
+  def destroy
+    @user = User.find(params[:id])
+    if @user == current_user
+      redirect_to users_path, alert: 'You cannot destroy yourself.'
+    else
+      @user.destroy
+      redirect_to users_path, notice: 'User was successfully destroyed.'
     end
   end
 

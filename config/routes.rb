@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/' => 'users#index', as: 'users'
     patch 'grant_admin' => 'users#grant_admin', as: 'grant_admin'
     patch 'prohibit_admin' => 'users#prohibit_admin', as: 'prohibit_admin'
+    delete ':id' => 'users#destroy', as: 'user'
   end
 
   resources :products do

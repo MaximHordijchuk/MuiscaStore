@@ -23,8 +23,9 @@
             <% end %>
             <%= form_for :user, url: prohibit_admin_path, html: { method: 'patch', class: 'inline' } do |f| %>
                 <%= f.hidden_field :id, value: user.id %>
-                <%= f.submit 'Prohibit admin', class: 'btn btn-danger btn-xs' %>
+                <%= f.submit 'Prohibit admin', class: 'btn btn-warning btn-xs' %>
             <% end %>
+            <%= link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
           </div>
         </td>
       </tr>
