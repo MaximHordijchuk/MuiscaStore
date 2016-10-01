@@ -122,3 +122,17 @@ input[readonly] {
 .clickable {
   cursor: pointer;
 }
+
+#product_info {
+  font-size: 1.1em;
+  word-wrap: break-word;
+  margin-bottom: 15px;
+
+  .actions {
+    width: 130px;
+  }
+
+  .field {
+    margin-bottom: 5px;
+  }
+}
