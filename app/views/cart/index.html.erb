@@ -16,7 +16,7 @@
         <td class="small-col">
           <a href="<%= product_path(e[:product].id) %>">
             <div class="text-center">
-              <%= image_tag e[:product].product_attachments.first.image.url, class: 'small-image' %>
+              <%= image_tag e[:product].main_image(:preview), class: 'small-image' %>
             </div>
           </a>
         </td>

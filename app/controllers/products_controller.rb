@@ -27,12 +27,13 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    if params[:product_attachments] && params[:product_attachments]['image']
+      params[:product_attachments]['image'].each do |image|
+        @product_attachment = @product.product_attachments.new(image: image)
+      end
+    end
     respond_to do |format|
       if @product.save
-        params[:product_attachments]['image'].each do |image|
-          @product_attachment = @product.product_attachments.create!(image: image)
-        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
