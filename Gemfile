@@ -56,4 +56,7 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
+# Gem for pagination
+gem 'kaminari'
+
 ruby '2.3.0'
