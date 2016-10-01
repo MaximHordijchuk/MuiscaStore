@@ -114,3 +114,7 @@ table {
 .actions {
   width: 140px;
 }
+
+input[readonly] {
+  background: #fff !important;
+}

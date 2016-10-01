@@ -1,0 +1,13 @@
+<div class="input-group" style="width: 140px;">
+  <span class="input-group-btn">
+    <%= link_to cart_decrease_path(locals[:id]), class: 'btn btn-default', method: :patch do %>
+      <span class="glyphicon glyphicon-minus"></span>
+  <% end %>
+  </span>
+  <input type="text" class="form-control text-center" value="<%= locals[:amount] %>" readonly>
+  <span class="input-group-btn">
+    <%= link_to cart_increase_path(locals[:id]), class: 'btn btn-default', method: :patch do %>
+      <span class="glyphicon glyphicon-plus"></span>
+    <% end %>
+  </span>
+</div>

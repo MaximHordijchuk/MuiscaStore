@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post '/add_product' => 'cart#add', as: 'add_product'
   patch '/update_product' => 'cart#update', as: 'update_product'
   delete '/remove_product/:id' => 'cart#remove', as: 'remove_product'
+  patch '/increase_amount/:id' => 'cart#increase', as: 'cart_increase'
+  patch '/decrease_amount/:id' => 'cart#decrease', as: 'cart_decrease'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

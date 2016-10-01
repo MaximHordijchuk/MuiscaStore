@@ -22,7 +22,9 @@
         </td>
         <td><%= e[:product].article %></td>
         <td><%= link_to e[:product].name, product_path(e[:product]) %></td>
-        <td><%= e[:amount] %></td>
+        <td class="small-col">
+          <%= render 'amount_form', locals: { id: e[:product].id,amount: e[:amount] } %>
+        </td>
         <td><%= number_to_currency e[:product].price %></td>
         <td><%= number_to_currency e[:product].price * e[:amount] %></td>
         <td class="small-col btn-group-sm">

@@ -48,7 +48,7 @@ class CartController < ApplicationController
     redirect_to root_path, alert: 'Couldn\'t update product. Product not found.'
   end
 
-  # delete /remove_product
+  # delete /remove_product/1
   def remove
     product_id = params[:id]
     if @cart[product_id]
@@ -56,6 +56,20 @@ class CartController < ApplicationController
       redirect_to cart_path and return
     end
     redirect_to root_path, alert: 'Couldn\'t remove product. Product not found.'
+  end
+
+  # patch /increase_amount/1
+  def increase
+    product_id = params[:id]
+    @cart[product_id] += 1 if @cart[product_id]
+    redirect_to cart_path
+  end
+
+  # patch /decrease_amount/1
+  def decrease
+    product_id = params[:id]
+    @cart[product_id] -= 1 if @cart[product_id] && @cart[product_id] > 1
+    redirect_to cart_path
   end
 
   private
