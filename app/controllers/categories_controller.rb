@@ -26,14 +26,14 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+    Category.transaction do
+      respond_to do |format|
+        if @category.save
+          update_positions
+          format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
+        else
+          format.html { render :new }
+        end
       end
     end
   end
@@ -41,13 +41,15 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+    old_position = @category.position
+    Category.transaction do
+      respond_to do |format|
+        if @category.update(category_params)
+          update_positions old_position
+          format.html { redirect_to categories_path, notice: 'Category was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
   end
@@ -71,5 +73,31 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :position)
+    end
+
+    def update_positions(old_pos = nil)
+      @category.position = 1 if @category.position < 1
+      all_categories = Category.where.not(id: @category.id)
+      max_pos = all_categories.maximum(:position)
+      new_pos = @category.position
+      if new_pos > max_pos + 1
+        new_pos = max_pos + 1
+        @category.position = new_pos
+      end
+      updates = {}
+      if old_pos
+        if old_pos < new_pos
+          categories = all_categories.where(position: (old_pos + 1)..new_pos)
+          categories.each { |c| updates[c.id] = { position: c.position - 1 } }
+        elsif new_pos < old_pos
+          categories = all_categories.where(position: new_pos...old_pos)
+          categories.each { |c| updates[c.id] = { position: c.position + 1 } }
+        end
+      elsif new_pos <= max_pos
+        categories = all_categories.where(position: new_pos..max_pos)
+        categories.each { |c| updates[c.id] = { position: c.position + 1 } }
+      end
+      Category.update(updates.keys, updates.values) if updates.any?
+      @category.save!
     end
 end
