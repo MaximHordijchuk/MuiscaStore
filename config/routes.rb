@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     post 'users' => 'devise/registrations#create', as: 'user_registration'
   end
 
+  scope '/users' do
+    get '/' => 'users#index', as: 'users'
+    patch 'grant_admin' => 'users#grant_admin', as: 'grant_admin'
+    patch 'prohibit_admin' => 'users#prohibit_admin', as: 'prohibit_admin'
+  end
+
   resources :products do
     resources :product_attachments, :except => [:index, :show]
   end

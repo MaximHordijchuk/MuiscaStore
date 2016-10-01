@@ -1,0 +1,35 @@
+<h1>All Users</h1>
+
+<table class="table table-bordered table-hover cart">
+  <thead class="thead-default">
+  <tr>
+    <th>Role</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td class="<%= user.admin? ? 'text-success' : 'text-warning' %>">
+          <%= user.admin? ? 'Admin' : 'User' %>
+        </td>
+        <td><%= user.email %></td>
+        <td class="small-col">
+          <div class="user-actions">
+            <%= form_for :user, url: grant_admin_path, html: { method: 'patch', class: 'inline' } do |f| %>
+                <%= f.hidden_field :id, value: user.id %>
+                <%= f.submit 'Grant admin', class: 'btn btn-success btn-xs' %>
+            <% end %>
+            <%= form_for :user, url: prohibit_admin_path, html: { method: 'patch', class: 'inline' } do |f| %>
+                <%= f.hidden_field :id, value: user.id %>
+                <%= f.submit 'Prohibit admin', class: 'btn btn-danger btn-xs' %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

@@ -45,14 +45,16 @@ header {
   max-height: 90px;
 }
 
-table.cart {
-  td {
-    text-align: center;
-    vertical-align: middle !important;
-  }
+table {
+  &.cart {
+    td {
+      text-align: center;
+      vertical-align: middle !important;
+    }
 
-  thead th {
-    text-align: center;
+    thead th {
+      text-align: center;
+    }
   }
 
   .small-col {
@@ -90,4 +92,12 @@ table td.align-left, table tr.align-left {
   tr td:first-of-type{
     width: 1%;
   }
+}
+
+.inline {
+  display: inline-block;
+}
+
+.user-actions {
+  width: 171px;
 }
