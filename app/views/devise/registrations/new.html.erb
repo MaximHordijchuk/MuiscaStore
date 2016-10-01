@@ -1,5 +1,5 @@
 <%= devise_error_messages! %>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: buyer_registration_path) do |f| %>
     <h1>Register</h1>
     <div class="field">
       <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email address', required: true %>

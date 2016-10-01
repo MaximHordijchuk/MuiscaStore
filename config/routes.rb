@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   devise_for :buyers, skip: :registrations
   devise_scope :buyer do
-    resource :registration,
-    only: [:new, :create],
-    path: 'buyers',
-    path_names: { new: 'sign_up' },
-    controller: 'devise/registrations'
+    get 'buyers/sign_up' => 'devise/registrations#new', as: 'new_buyer_registration'
+    post 'buyers' => 'devise/registrations#create', as: 'buyer_registration'
   end
 
   resources :products do
