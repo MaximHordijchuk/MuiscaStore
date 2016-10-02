@@ -18,7 +18,7 @@ header {
     text-align: center;
     font-size: 67px;
     border-bottom: 1px solid #D1D1D1;
-    padding-bottom: 7px;
+    padding-bottom: 10px;
   }
 
   a:link {
@@ -44,6 +44,10 @@ input {
 
   #menu_body {
     padding: 0;
+
+    .nav a {
+      color: #5F5F5F;
+    }
   }
 
   .nav-pills a {
@@ -76,7 +80,7 @@ table {
   td.align-left,
   tr.align-left,
   th.align-left {
-    text-align: left;
+    text-align: left !important;
   }
 
   &.centered-table {
