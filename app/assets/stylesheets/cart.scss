@@ -1,0 +1,25 @@
+table.cart {
+  td {
+    text-align: center;
+    vertical-align: middle !important;
+  }
+
+  thead th {
+    text-align: center;
+  }
+}
+
+.total-price {
+  font-weight: bold;
+  text-align: right;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+.action-btns-right {
+  float: right;
+}
+
+input[readonly] {
+  background: #fff !important;
+}

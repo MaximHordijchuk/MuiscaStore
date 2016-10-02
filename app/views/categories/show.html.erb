@@ -1,15 +1,17 @@
 <h1><%= @category.name %></h1>
 
-<div class="row">
+<div class="row product-tiles">
   <% @products.each do |product| %>
     <a href="<%= product_path(product) %>">
-      <div class="col-xs-6 col-md-4 col-lg-3">
-        <div class="thumbnail fixed-height">
-          <%= image_tag product.main_image(:preview) %>
-          <div class="caption">
-            <p><%= product.name %></p>
-            <p><strong><%= number_to_currency product.price %></strong></p>
+      <div class="col-xs-6 col-md-6 col-lg-4 product-tile">
+        <div class="thumbnail-container">
+          <div class="thumbnail">
+            <%= image_tag product.main_image(:preview), class: 'img-preview' %>
           </div>
+        </div>
+        <div class="product-details">
+          <p class="title"><%= product.name %></p>
+          <span class="price"><%= number_to_currency product.price %></span>
         </div>
       </div>
     </a>

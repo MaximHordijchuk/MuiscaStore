@@ -4,6 +4,13 @@
 @import "great_vibes_font";
 @import "main";
 @import "devise";
+@import "products";
+@import "cart";
+@import "thumbnails";
+
+html, body {
+  background: image_url('imgbg.jpg');
+}
 
 header {
   h1 {
@@ -23,8 +30,21 @@ header {
   }
 }
 
+// Make straight borders
+.btn {
+  border-radius: 0 !important;
+}
+
+input {
+  border-radius: 0 !important;
+}
+
 #menu {
-  padding: 0;
+  border-radius: 0;
+
+  #menu_body {
+    padding: 0;
+  }
 
   .nav-pills a {
     border-radius: 0;
@@ -35,30 +55,28 @@ header {
   }
 }
 
-.thumbnail.fixed-height img {
-  max-height: 150px;
-  height: 150px;
-}
-
 .small-image {
   max-width: 90px;
   max-height: 90px;
 }
 
 table {
-  &.cart {
-    td {
-      text-align: center;
-      vertical-align: middle !important;
-    }
-
-    thead th {
-      text-align: center;
-    }
-  }
-
   .small-col {
     width: 1%;
+  }
+
+  .user-actions {
+    width: 232px;
+  }
+
+  .actions {
+    width: 140px;
+  }
+
+  td.align-left,
+  tr.align-left,
+  th.align-left {
+    text-align: left;
   }
 
   &.centered-table {
@@ -68,30 +86,12 @@ table {
     }
   }
 
-  td.align-left,
-  tr.align-left,
-  th.align-left {
-    text-align: left;
-  }
-
-  td.align-center,
-  tr.align-center,
-  th.align-center {
-    text-align: center;
+  &.table-hover > tbody > tr:hover {
+    background-color: white;
   }
 }
 
-.total-price {
-  font-weight: bold;
-  text-align: right;
-  font-size: 1.3em;
-  margin-bottom: 20px;
-}
-
-.action-btns-right {
-  float: right;
-}
-
+// Used for Add button
 .right-btn-block {
   position: relative;
 
@@ -107,32 +107,6 @@ table {
   display: inline-block;
 }
 
-.user-actions {
-  width: 232px;
-}
-
-.actions {
-  width: 140px;
-}
-
-input[readonly] {
-  background: #fff !important;
-}
-
 .clickable {
   cursor: pointer;
-}
-
-#product_info {
-  font-size: 1.1em;
-  word-wrap: break-word;
-  margin-bottom: 15px;
-
-  .actions {
-    width: 130px;
-  }
-
-  .field {
-    margin-bottom: 5px;
-  }
 }

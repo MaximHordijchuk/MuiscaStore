@@ -1,3 +1,49 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.product-tiles {
+  word-wrap: break-word;
+
+  .product-tile {
+    margin-bottom: 20px;
+
+    .product-details {
+      margin-top: -18px;
+      height: 75px;
+      padding: 6px 0 4px 6px;
+
+      .title {
+        color: #555;
+        line-height: 1.2;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .price {
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      border: 1px solid #ddd;
+      background: white;
+
+      .thumbnail {
+        border: none;
+      }
+    }
+  }
+}
+
+#product_info {
+  font-size: 1.1em;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+
+  .actions {
+    width: 130px;
+  }
+
+  .field {
+    margin-bottom: 5px;
+  }
+}
