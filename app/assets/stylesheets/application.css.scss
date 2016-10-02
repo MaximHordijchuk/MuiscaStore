@@ -49,17 +49,24 @@ input {
   #menu_body {
     padding: 0;
 
-    .nav a {
-      color: #5F5F5F;
+    .nav {
+      a {
+        color: #5F5F5F;
+        border-radius: 0;
+      }
+
+      li {
+        margin: 0;
+
+        &.active a {
+          background: #eeeeee;
+        }
+      }
     }
-  }
 
-  .nav-pills a {
-    border-radius: 0;
-  }
-
-  hr {
-    margin: 0;
+    hr {
+      margin: 0;
+    }
   }
 }
 
