@@ -41,11 +41,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:cart] = {}
-        format.html { redirect_to root_path, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to thank_path, notice: 'Order was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end

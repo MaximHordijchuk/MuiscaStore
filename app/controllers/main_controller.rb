@@ -5,4 +5,7 @@ class MainController < ApplicationController
 
   def about
   end
+
+  def thank
+  end
 end

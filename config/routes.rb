@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   root to:'main#index'
   get '/about' => 'main#about', as: 'about'
+  get '/thank' => 'main#thank', as: 'thank'
 
   get '/cart' => 'cart#index', as: 'cart'
   post '/add_product' => 'cart#add', as: 'add_product'
