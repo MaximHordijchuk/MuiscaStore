@@ -1,0 +1,39 @@
+<h1>Main Page Products</h1>
+
+<div class="right-btn-block">
+  <%= link_to 'Add Product', new_main_product_path, class: 'btn btn-success' %>
+</div>
+
+<table class="table table-hover centered-table">
+  <thead class="thead-default">
+  <tr>
+    <th>Position</th>
+    <th>Image</th>
+    <th class="align-left">Product name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @main_products.each do |product| %>
+    <tr>
+      <td class="small-col"><%= product.position %></td>
+      <td class="small-col">
+        <a href="<%= product_path(product.product) %>">
+          <div class="text-center">
+            <%= image_tag product.product.main_image(:preview), class: 'small-image' %>
+          </div>
+        </a>
+      </td>
+      <td class="align-left"><%= link_to product.product.name, product_path(product.product) %></td>
+      <td class="small-col">
+        <div class="btn-group-xs main-product-actions">
+          <%= link_to 'Edit', edit_main_product_path(product), class: 'btn btn-primary' %>
+          <%= link_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @main_products %>

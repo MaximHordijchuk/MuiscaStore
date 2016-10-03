@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-    <%= form_for(@category) do |f| %>
-        <% if @category.errors.any? %>
+    <%= form_for @main_product, html: { multipart: true } do |f| %>
+        <% if @main_product.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+              <h2><%= pluralize(@main_product.errors.count, "error") %> prohibited this main_product from being saved:</h2>
 
               <ul>
-                <% @category.errors.full_messages.each do |message| %>
+                <% @main_product.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
               </ul>
@@ -14,13 +14,13 @@
         <% end %>
 
         <div class="row">
-          <div class="col-sm-3 col-xs-12 form-group">
+          <div class="col-sm-4 col-md-3 col-xs-12 form-group">
+            <%= f.label :product_id %><br>
+            <%= f.text_field :product_id, class: 'form-control' %>
+          </div>
+          <div class="col-sm-4 col-md-3 col-xs-12 form-group">
             <%= f.label :position %>
             <%= f.number_field :position, class: 'form-control', min: 1 %>
-          </div>
-          <div class="col-sm-9 col-xs-12 form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control', placeholder: 'name' %>
           </div>
           <div class="col-xs-12">
             <%= f.submit class: 'btn btn-success pull-right' %>

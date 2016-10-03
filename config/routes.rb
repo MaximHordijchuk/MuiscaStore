@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :orders
+  resources :main_products, :except => [:show]
 
   root to:'main#index'
   get '/about' => 'main#about', as: 'about'
