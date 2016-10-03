@@ -43,7 +43,7 @@
           <div class="col-xs-6 col-md-4 col-lg-3">
             <div class="thumbnail-container">
               <div class="thumbnail fixed-height clickable">
-                <%= image_tag p.image.url(:preview), onclick: "changeImage('image_#{p.id}')", id: "image_#{p.id}", class: 'img-preview' %>
+                <%= image_tag p.image.url, onclick: "changeImage('image_#{p.id}')", id: "image_#{p.id}", class: 'img-preview' %>
               </div>
             </div>
           </div>
