@@ -1,5 +1,6 @@
 class MainProductsController < ApplicationController
-  before_action :set_main_product, only: [:show, :edit, :update, :destroy]
+  before_filter :ensure_admin!
+  before_action :set_main_product, only: [:edit, :update, :destroy]
 
   # GET /main_products
   # GET /main_products.json
@@ -67,6 +68,13 @@ class MainProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def main_product_params
       params.require(:main_product).permit(:product_id, :position)
+    end
+
+    def ensure_admin!
+      unless current_user.try(:admin?)
+        redirect_to root_path, alert: 'Permission denied.'
+        false
+      end
     end
 
     def update_positions(old_pos = nil)
