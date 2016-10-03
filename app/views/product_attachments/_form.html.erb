@@ -14,8 +14,14 @@
       <% end %>
 
       <% if @product_attachment.persisted? %>
-        <div class="thumbnail">
-          <%= image_tag @product_attachment.image %>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="thumbnail-container">
+              <div class="thumbnail">
+                <%= image_tag @product_attachment.image %>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
 
