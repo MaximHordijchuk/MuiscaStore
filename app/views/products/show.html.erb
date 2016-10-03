@@ -15,7 +15,7 @@
       </div>
       <div class="field">
         <strong>Price:</strong>
-        <%= number_to_currency @product.price %>
+        <%= number_to_euro @product.price %>
       </div>
       <div class="actions">
         <%= form_for :product, url: add_product_path, html: { class: '' } do |f| %>

@@ -25,8 +25,8 @@
         <td class="small-col">
           <%= render 'amount_form', locals: { id: e[:product].id,amount: e[:amount] } %>
         </td>
-        <td><%= number_to_currency e[:product].price %></td>
-        <td><%= number_to_currency e[:product].price * e[:amount] %></td>
+        <td><%= number_to_euro e[:product].price %></td>
+        <td><%= number_to_euro e[:product].price * e[:amount] %></td>
         <td class="small-col btn-group-sm">
           <a href="<%= remove_product_path(e[:product]) %>" class="btn btn-danger" data-method="delete">
             <span class="glyphicon glyphicon-trash"></span>
@@ -37,7 +37,7 @@
   </tbody>
 </table>
 <div class="total-price">
-  Total: <%= number_to_currency @total %>
+  Total: <%= number_to_euro @total %>
 </div>
 <div class="action-btns-right">
   <%= link_to 'Place order', new_order_path, class: 'btn btn-success' %>
