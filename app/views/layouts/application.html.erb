@@ -11,11 +11,16 @@
 
 <div class="container">
   <header>
-    <a href="<%= cart_path %>" class="btn btn-default pull-right" aria-label="Left Align">
-      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-      <span>Cart</span>
-      <span class="label label-info"><%= cart_products_count %></span>
-    </a>
+    <div class="pull-right" id="header_addition">
+      <a href="<%= cart_path %>" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        <span>Cart</span>
+        <span class="label label-info"><%= cart_products_count %></span>
+      </a>
+      <div id="main_page_user_email">
+        <span>Your email: <strong><%= current_user.email %></strong></span>
+      </div>
+    </div>
     <a href="/">
       <h1>Mole Jewelery</h1>
     </a>
