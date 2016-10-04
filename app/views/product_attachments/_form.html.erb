@@ -2,7 +2,7 @@
   <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
     <%= form_for([@product, @product_attachment]) do |f| %>
       <% if @product_attachment.errors.any? %>
-        <div id="error_explanation">
+        <div id="error_explanation" class="alert alert-info">
           <h2><%= pluralize(@product_attachment.errors.count, "error") %> prohibited this product_attachment from being saved:</h2>
 
           <ul>
