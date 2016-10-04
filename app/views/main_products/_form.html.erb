@@ -14,9 +14,11 @@
         <% end %>
 
         <div class="row">
-          <div class="col-sm-4 col-md-3 col-xs-12 form-group">
-            <%= f.label :product_id %><br>
-            <%= f.text_field :product_id, class: 'form-control' %>
+          <div class="col-xs-12 form-group">
+            <%= f.label :product_id %>
+            <%= select_tag 'main_product[product_id]',
+                           options_from_collection_for_select(all_products, 'id', 'name'),
+                           class: 'form-control' %>
           </div>
           <div class="col-sm-4 col-md-3 col-xs-12 form-group">
             <%= f.label :position %>

@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :categories, :cart_products_count
+  helper_method :all_categories, :all_products, :cart_products_count
 
-  def categories
-    @categories = Category.all
+  def all_categories
+    Category.all
+  end
+
+  def all_products
+    Product.all
   end
 
   def cart_products_count

@@ -80,7 +80,7 @@ class MainProductsController < ApplicationController
     def update_positions(old_pos = nil)
       @main_product.position = 1 if @main_product.position < 1
       all_products = MainProduct.where.not(id: @main_product.id)
-      max_pos = all_products.maximum(:position)
+      max_pos = all_products.maximum(:position) || 0
       new_pos = @main_product.position
       if new_pos > max_pos + 1
         new_pos = max_pos + 1

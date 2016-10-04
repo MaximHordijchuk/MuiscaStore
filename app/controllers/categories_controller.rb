@@ -86,7 +86,7 @@ class CategoriesController < ApplicationController
     def update_positions(old_pos = nil)
       @category.position = 1 if @category.position < 1
       all_categories = Category.where.not(id: @category.id)
-      max_pos = all_categories.maximum(:position)
+      max_pos = all_categories.maximum(:position) || 0
       new_pos = @category.position
       if new_pos > max_pos + 1
         new_pos = max_pos + 1
