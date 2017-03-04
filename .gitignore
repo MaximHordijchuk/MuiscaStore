@@ -30,3 +30,5 @@
 
 # Ignore uploads
 /public/uploads/
+
+.ruby-gemset
